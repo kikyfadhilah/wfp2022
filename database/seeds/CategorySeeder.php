@@ -15,9 +15,13 @@ class CategorySeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i < 10; $i++){
+
+        $arrCategory = ['Analgesik Narkotik', 'Analgesik Non Narkotik', 'Antipirai', 'Nyeri Neuropatik','Anestetik Lokal'
+        , 'Anestetik Umum dan Oksigen', 'Obat untuk Prosedur Pre Operatif', 'Antialergi dan Obat untuk Anafilaksis'
+        , 'Khusus', 'Umum', 'Antiepilepsi - Antikonvulsi'];
+        foreach ($arrCategory as $kategori){
             DB::table('categories')->insert([
-                'nama' => Str::random(10),
+                'nama' => $kategori
             ]);
         }
         

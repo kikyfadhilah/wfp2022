@@ -15,12 +15,23 @@ class ProductSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i <= 10; $i++){
-            for($j= 0; $j<3; $j++){
+
+        $arrNama = [
+            'fentanil', 'hidromorfon', 'kodein', 'morfin', 'oksikodon', 'petidin', 'sufentanil', 'asam mefenamat',
+            'ibuprofen*', 'ketoprofen', 'ketorolak', 'metamizol', 'natrium diklofenak', 'parasetamol', 'alopurinol', 'kolkisin',
+            'probenesid', 'amitriptilin', 'gabapentin', 'karbamazepin', 'bupivakain', 'bupivakain heavy', 'etil klorida', 'lidokain',
+            'ropivakain', 'deksmedetomidin', 'desfluran', 'halotan', 'isofluran', 'ketamin', 'nitrogen oksida', 'oksigen', 'propofol'
+        ];
+        // $arrDes = [''];
+        $counter = 0;
+        for ($i = 1; $i <= 11; $i++) {
+            for ($j = 0; $j < 3; $j++) {
                 DB::table('products')->insert([
-                    'nama' => Str::random(10),
-                    'category_id' => $i
+                    'nama' => $arrNama[$counter],
+                    'deskripsi' => Str::random(50),
+                    'category_id' => $i,
                 ]);
+                $counter += 1;
             }
         }
     }

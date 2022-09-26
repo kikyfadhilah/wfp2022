@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,10 @@ Route::get('/my', function(){
 Route::get('/myfriend/{nrp?}', function($nrp=null){ 
     return view('myfriend',['nrp' => $nrp]); 
 });
+
+Route::resource('product','ProductController');
+Route::resource('category','CategoryController');
+
 
 
 // Route::get('/myfriend/{nrp?}', function($nrp=null){ 
