@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Product;
 use DB;
@@ -30,6 +31,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view("category.create");
     }
 
     /**
@@ -41,6 +43,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $data = new Category();
+        $data->nama=$request->get('nama');
+        $data->deskripsi=$request->get('deskripsi');
+        
+        $data->save();
     }
 
     /**

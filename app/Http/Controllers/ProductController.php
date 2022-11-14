@@ -18,9 +18,8 @@ class ProductController extends Controller
     {
         $queryBuilder = DB::table('products')->get();
         return view('product.index', compact('queryBuilder'));
-        
-       $queryModel = Product::all();
-       
+
+        $queryModel = Product::all();
     }
 
     /**
@@ -30,8 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
-        echo"halo create";
+        //untuk memunculkan form
+
+        return view("product.createProduct");
     }
 
     /**
@@ -43,7 +43,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data = new Product();
+        $data->nama=$request->get('nama');
+        $data->form=$request->get('formula');
+        $data->restriction_formula=$request->get('restrictionFormula');
+        $data->deskripsi=$request->get('deskripsi');
+        $data->harga=$request->get('harga');
+        $data->faskes1=$request->get('fakes1');
+        $data->faskes2=$request->get('fakes2');
+        $data->faskes3=$request->get('fakes3');
+        $data->category_id=$request->get('category');
+        $data->save();
     }
+    
 
     /**
      * Display the specified resource.
@@ -54,6 +67,8 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+        $dataProduk = DB::table('products')->where('id', $id)->first();
+        return view('obat.show', compact('dataProduk'));
     }
 
     /**
@@ -89,4 +104,28 @@ class ProductController extends Controller
     {
         //
     }
+    public function showInfo()
+    {
+        $result = Product::orderBy('harga', 'DESC')->first();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => "<div class='alert alert-info'>
+                Did you know? <br>The most expensive product is " . $result->nama . "</div>"
+        ), 200);
+    }
+
+
+
+
+
+    
+
+    // public function showInfo()
+    // {
+    //     return response()->json(array(
+    //         'status' => 'oke',
+    //         'msg' => "<div class='alert alert-info'>
+    //          Did you know? <br>This message is sent by a Controller.'</div>"
+    //     ), 200);
+    // }
 }

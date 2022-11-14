@@ -20,6 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('form');
             $table->string('restriction_formula');
             $table->string('deskripsi');
+            $table->integer('harga');
+            $table->string('image');
+            $table->string('category_id');
+            $table->string('faskes1');
+            $table->string('faskes2');
+            $table->string('faskes3');
             $table->timestamps();
         });
     }

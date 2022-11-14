@@ -44,7 +44,21 @@ Route::get('/myfriend/{nrp?}', function($nrp=null){
 Route::resource('product','ProductController');
 Route::resource('category','CategoryController');
 
+//product controller
+Route::post('/products/showInfo','ProductController@showInfo')->name('product.showInfo');
 
+
+//week 8 -- user
+// Route::resource('users','UserController');
+
+
+// week 8 -- roles'
+ Route::resource('roles','RoleController');
+
+ //week 8 tugas ppt
+ Route::resource('transaction','TransactionController');
+ Route::post('transactions/showDataAjax/','TransactionController@showAjax')->name('transaction.showAjax');
+ Route::resource('user','UserController');
 
 // Route::get('/myfriend/{nrp?}', function($nrp=null){ 
 //     return view('myfriend',['nrp' => $nrp]); 
